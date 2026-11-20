@@ -605,7 +605,7 @@ Flags（不在 RTSIS 原文内）：交错模式（0x0002）与认证 NAK（0x00
 
 ---
 
-## 11. 测试向量（Test Vectors）
+## 附录 A. 测试向量（Test Vectors）
 
 本节提供测试向量，让实现方可验证其签名原文构造、哈希输入与偏移切分。固定私钥与随机 k 值是公开测试值，仅供向量复现——MUST NOT 用于生产。
 
@@ -637,7 +637,7 @@ EBE6249000000000 = 2025-06-01 01:00:00 UTC（+3600 s）
 EBE618D880000000 = 2025-06-01 00:10:00.5 UTC
 ```
 
-### 11.1. RTSAA（SM2，algorithm_id = 0x03）
+### A.1. RTSAA（SM2，algorithm_id = 0x03）
 
 输入：algorithm_id = `0x03 00 00 00 00 00 00 00`；RATSI 公钥 = pk_ts；δ = 100 ns；签发时间 = valid_from = `0xEBE6168000000000`；valid_until = `0xEBE6249000000000`。
 
@@ -673,7 +673,7 @@ root_signature = 0x1817357fbd4c3f20f394ee5a91f0a1eb5c2548c1e057bcbccfc225980e313
 
 RTSAA 指纹 = SM3(完整 168B) = `0xce03d94a7447053549fe6a2e44854214fa63e34b800f8236a2143bf0f17f57ca`。
 
-### 11.2. RTSIS（SM2）
+### A.2. RTSIS（SM2）
 
 输入：响应模式 = `0x0100000000000000`；RATSI-PKF = SM3(pk_ts) = `0xdad451ec36b06f8a16efb4867def22db0ae251fa143931b0067192998c48517e`；RTSAA 指纹 = `0xce03d94a...`（见上）；被证明时间 = `0xEBE618D880000000`。
 
@@ -693,9 +693,9 @@ e = SM3(Za_ts ∥ signing_payload) = 0x570d32429acf8cdd2d0bbed22076c218cc50151eb
 RTSIS = 0x5bc0fd53649665bfa9266a492fdeb75bdeade2f43c6bbe43f7859181394a43ac6d7f571d124666d58f3bb9248ac0db17b78ea84f4391849a3d79970555b1fe53
 ```
 
-### 11.3. RTSAA（Ed25519，algorithm_id = 0x01）
+### A.3. RTSAA（Ed25519，algorithm_id = 0x01）
 
-输入：seed_root = 1（Ed25519）；RATSI seed_ts = 2；RATSI 原始公钥 pk_ts = `0x7422b9887598068e32c4448a949adb290d0f4e35b9e01b0ee5f1a1e600fe2674`；RATSI-PKF = SHA-256(pk_ts 原始 32B) = `0x2c5a92ed92c0b7999f215be93c8f0433f58072bdba21a8b277faa495b57bf7f3`；δ = 100 ns；时间字段同 §11.1。
+输入：seed_root = 1（Ed25519）；RATSI seed_ts = 2；RATSI 原始公钥 pk_ts = `0x7422b9887598068e32c4448a949adb290d0f4e35b9e01b0ee5f1a1e600fe2674`；RATSI-PKF = SHA-256(pk_ts 原始 32B) = `0x2c5a92ed92c0b7999f215be93c8f0433f58072bdba21a8b277faa495b57bf7f3`；δ = 100 ns；时间字段同附录 A.1。
 
 ```
 signing_payload =
@@ -716,7 +716,7 @@ root_signature = 0xa90a83130f05e6f03b0fb7ad09ccd8f0136936dbebc060c4041ab67553a5f
 
 RTSAA 指纹 = SHA-256(完整 168B) = `0xaee21b30c2f9c90ea17bdf3949ccaeec2290859f759a2c948197ea503f1f40ea`。
 
-### 11.4. 负向测试（拒绝语义）
+### A.4. 负向测试（拒绝语义）
 
 | # | 输入 | 期望行为 |
 |---|---|---|
@@ -735,7 +735,7 @@ RTSAA 指纹 = SHA-256(完整 168B) = `0xaee21b30c2f9c90ea17bdf3949ccaeec2290859
 
 ---
 
-## 附录 A. 字段与签名原文汇总（Field and Signing-Payload Summary）
+## 附录 B. 字段与签名原文汇总（Field and Signing-Payload Summary）
 
 RTSAS-Request Data（280 字节）：
 
