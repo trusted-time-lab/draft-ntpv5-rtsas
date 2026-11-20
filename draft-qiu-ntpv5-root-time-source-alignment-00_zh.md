@@ -3,12 +3,12 @@
 ```
 Network Working Group                                     ximing Qiu
 Internet-Draft                                            天枢时源
-Intended status: Standards Track                          2026 年 11 月 17 日
-Expires: 2027 年 5 月 17 日
+Intended status: Standards Track                          2026 年 11 月 20 日
+Expires: 2027 年 5 月 24 日
 
 
         根时源对齐签名和传输协议（面向 NTPv5）
-          draft-qiu-ntpv5-root-time-source-alignment-01
+          draft-qiu-ntpv5-root-time-source-alignment-00
 ```
 
 ---
@@ -18,8 +18,6 @@ Expires: 2027 年 5 月 17 日
 本文定义了一个 NTPv5 扩展，把时间值的出身从「声称」变成「证据」。一个预信任的根时源（Root Time Source）认证某个时间服务实例的时钟已经过物理源的对齐检查；该实例再自己签时间值。只持有根公钥的客户端离线验证这两个签名，于是能区分「携带可验证出身的时间值」与「仅仅声称有出身的时间值」。
 
 该扩展刻意只做一件事、不多做：它证明**一个签名时间值从哪来**。它不对时、不评级源、没有撤销——签出的证明是单向的，一旦签出即存在。它是 opt-in 的，用两个扩展字段，不碰核心协议的任何东西。
-
-本修订（-01）更新了算法标识值（Ed25519 在前、SM2 作为中国部署选项），补回了 -00 遗漏的互操作关键定义（RTSAA 交付、缓存、重新发起与递归、通知/故障格式、查询类型、完整客户端验证），并新增测试向量。
 
 ---
 
@@ -550,7 +548,7 @@ Flags（不在 RTSIS 原文内）：交错模式（0x0002）与认证 NAK（0x00
 
 - **NTS**：不取代 NTS；NTS 认证传输，RTSAS 承载锚。两者可并用。
 - **Time Sources**：Time Sources *列举*服务器声称的源；RTSAS *证明*锚。互补、不重叠。
-- **MAC / NTS 位置**：按 NTPv5 §7.3，MAC 扩展字段 MUST 最后。RTSAS-Request/RTSAS-Response MUST 放在 MAC 之前、NTS Authenticator 之前。两者并用时顺序为 RTSAS → NTS Authenticator → MAC。
+- **MAC / NTS 位置**：按 NTPv5 §7.3，MAC 扩展字段 [RFC 8573] MUST 最后。RTSAS-Request/RTSAS-Response MUST 放在 MAC 之前、NTS Authenticator 之前。两者并用时顺序为 RTSAS → NTS Authenticator → MAC。
 
 ---
 

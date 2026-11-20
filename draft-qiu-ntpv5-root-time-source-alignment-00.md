@@ -3,13 +3,13 @@
 ```
 Network Working Group                                     ximing Qiu
 Internet-Draft                                            Tianshu Shiyuan
-Intended status: Standards Track                          17 November 2026
-Expires: 17 May 2027
+Intended status: Standards Track                          20 November 2026
+Expires: 24 May 2027
 
 
         Root Time Source Alignment Signature and Transport
                          Protocol for NTPv5
-          draft-qiu-ntpv5-root-time-source-alignment-01
+          draft-qiu-ntpv5-root-time-source-alignment-00
 ```
 
 ---
@@ -19,8 +19,6 @@ Expires: 17 May 2027
 This document defines an NTPv5 extension that turns a time value's provenance from a *claim* into *evidence*. A pre-trusted Root Time Source attests that a given time service instance's clock has been checked for alignment against a physical source; that instance then signs the time value itself. A client holding only the root public key verifies both signatures offline, so it can tell a time value that carries verifiable provenance apart from one that merely claims it.
 
 The extension deliberately does one thing and no more: it proves *where a signed time value came from*. It does not adjust clocks, it does not rate sources, and it has no revocation — a signed proof is unilateral, it exists once signed. It is opt-in, uses two extension fields, and touches nothing in the core protocol.
-
-This revision (-01) updates the algorithm identifier values (Ed25519 first, SM2 as a China-deployment option), restores the interoperation-critical definitions that were omitted from -00 (RTSAA delivery, caching, re-origination and recursion, notice/fault formats, query types, full client verification), and adds test vectors.
 
 ---
 
@@ -556,7 +554,7 @@ Consequences:
 
 - **NTS**: does not replace NTS; NTS authenticates transport, RTSAS carries the anchor. Both may be used together.
 - **Time Sources**: Time Sources *lists* the sources a server claims; RTSAS *proves* the anchor. Complementary, not overlapping.
-- **MAC / NTS placement**: per NTPv5 §7.3, the MAC extension field MUST be last. RTSAS-Request/RTSAS-Response MUST be placed before MAC, and before the NTS Authenticator when NTS is used. If both are used, the order is RTSAS → NTS Authenticator → MAC.
+- **MAC / NTS placement**: per NTPv5 §7.3, the MAC extension field [RFC 8573] MUST be last. RTSAS-Request/RTSAS-Response MUST be placed before MAC, and before the NTS Authenticator when NTS is used. If both are used, the order is RTSAS → NTS Authenticator → MAC.
 
 ---
 

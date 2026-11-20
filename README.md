@@ -4,7 +4,8 @@ Internet-Draft: **Root Time Source Alignment Signature and Transport Protocol fo
 
 ## Status
 
-- **Revision**: -01 (working draft, in preparation for IETF submission)
+- **Revision**: -00 (submitted to the IETF Datatracker)
+- **Datatracker**: https://datatracker.ietf.org/doc/draft-qiu-ntpv5-root-time-source-alignment/
 - **Intended status**: Standards Track
 - **Author**: ximing Qiu (Tianshu Shiyuan Technology Co., Ltd.)
 
@@ -24,8 +25,8 @@ uses two extension fields, and touches nothing in the core protocol.
 
 | File | Description |
 |---|---|
-| [`draft-qiu-ntpv5-root-time-source-alignment-01.md`](draft-qiu-ntpv5-root-time-source-alignment-01.md) | The Internet-Draft text (English) |
-| [`draft-qiu-ntpv5-root-time-source-alignment-01_zh.md`](draft-qiu-ntpv5-root-time-source-alignment-01_zh.md) | Chinese translation (for reference) |
+| [`draft-qiu-ntpv5-root-time-source-alignment-00.md`](draft-qiu-ntpv5-root-time-source-alignment-00.md) | The Internet-Draft text (English) |
+| [`draft-qiu-ntpv5-root-time-source-alignment-00_zh.md`](draft-qiu-ntpv5-root-time-source-alignment-00_zh.md) | Chinese translation (for reference) |
 
 ## Reference implementation
 
